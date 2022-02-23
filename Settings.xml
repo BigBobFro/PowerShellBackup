@@ -1,0 +1,17 @@
+<!--
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+ 	Author: Victor Willingham (Fro and Bob: Technology Services) 	
+-->
+
+<Root>
+	<Retention>
+		<Number>1</Number>
+		<Unit>Month</Unit>
+	</Retention>
+	<Destination>e:\Backup</Destination>
+	<Backup>
+		<name>Firm</name>
+		<Location>d:\Firm</Location>
+	</Backup>
+</Root>
