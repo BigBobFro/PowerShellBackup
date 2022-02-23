@@ -1,7 +1,8 @@
 <!--
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
- 	Author: Victor Willingham (Fro and Bob: Technology Services) 	
+ 	Author: Victor Willingham (https://github.com/BigBobFro)
+  	Used in conjunction with LocalBackup.ps1
 -->
 
 <Root>
@@ -13,5 +14,9 @@
 	<Backup>
 		<name>Firm</name>
 		<Location>d:\Firm</Location>
+	</Backup>
+	<Backup>
+		<Name>OwnerData</Name>
+		<Location>f:\user\<REDACTED>\Documents</Location>
 	</Backup>
 </Root>
