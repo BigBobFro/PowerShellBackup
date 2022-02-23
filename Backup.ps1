@@ -2,7 +2,7 @@
 Custom backup script
 
 Originally written: Nov 5, 2015
-Original Author: Victor Willingham (Fro and Bob: Technology Services)
+Original Author: Victor Willingham (https://github.com/BigBobFro)
 
 Dependancies: 		Powershell 2.0
 					.NET 4.0
