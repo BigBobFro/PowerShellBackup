@@ -6,14 +6,18 @@
 -->
 
 <Root>
+	<AppSettings>
+		<TempFolder>c:\temp</TempFolder>
+		<LogFolder>c:\Logs</LogFolder>
+	</AppSettings>
 	<Retention>
 		<Number>1</Number>
 		<Unit>Month</Unit>
 	</Retention>
 	<Destination>e:\Backup</Destination>
 	<Backup>
-		<name>Firm</name>
-		<Location>d:\Firm</Location>
+		<name>Files</name>
+		<Location>d:\Files</Location>
 	</Backup>
 	<Backup>
 		<Name>OwnerData</Name>
