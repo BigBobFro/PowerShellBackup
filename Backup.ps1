@@ -13,7 +13,8 @@ Version History
 Current Version 1.0 -- Nov 5, 2015
 ========================================
 1.0 - New Script developed in Powershell 2.0
-
+1.1 - Addition of AppSetting in config file for Temp and Log locations
+    - Also requires that logging section be moved later, after collection of info from datafile
 ========================================
 #>
 
@@ -28,11 +29,25 @@ $srcPath = Split-Path -Path $MyInvocation.MyCommand.Path
 $divider = "====================================================================================================================" 
 
 
+# ===============================================================================================================================
+# Check for settings file in same folder as execution path
+# $DataPath = "$srcpath\Settings.xml"
+if (Test-Path -path $datapath) 
+{
+	[xml]$dataFile = Get-Content $datapath
+	"Using Datafile $datapath" | out-file -filepath $logfile -append
+	$divider | out-file -filepath $logfile -append
+}
+Else {"No Settings File" | out-file -filepath $logfile -append; exit 5}
+
 # Setup Logging
-$LogName = "CustomBackup.log"
-$LogPath = "C:\Logs"
+$LogName = "PowerShellBackup.log"
+$LogPath = $datafile.root.appsettings.logfolder							# Grab folder location from datafile
 $LogFile = "$LogPath\$LogName"
-$tmpPath = "c:\temp"
+if ($null -eq $($datafile.root.appsettings.tempfolder)){
+	$tempPath = "%WINDIR%\temp"}
+Else {
+	$tmpPath = $datafile.root.appsettings.tempfolder}					# Grab folder location from datafile. Set to c:\win\temp if empty
 
 If(-not(Test-Path -Path $LogPath) -eq $true)							# Create Logs Directory if doesn't exist
 	{New-Item -ItemType Directory -Path $LogPath}
@@ -44,16 +59,6 @@ If(-not(Test-Path -Path $TmpPath) -eq $true)							# Create Temp Directory if do
 If(Test-Path -Path $LogFile) {"`n`n`n$divider" | Out-File -Filepath $logFile -Append}
 Else {"$divider`n$divider" | Out-File -Filepath $logFile}
 
-# ===============================================================================================================================
-# Check for settings file in same folder as execution path
-# $DataPath = "$srcpath\Settings.xml"
-if (Test-Path -path $datapath) 
-{
-	[xml]$dataFile = Get-Content $datapath
-	"Using Datafile $datapath" | out-file -filepath $logfile -append
-	$divider | out-file -filepath $logfile -append
-}
-Else {"No Settings File" | out-file -filepath $logfile -append; exit 5}
 
 $global:BUdate = "$(get-date -f yyyyMMdd)"
 $global:destination = "$datafile.root.destination\$global:budate"
