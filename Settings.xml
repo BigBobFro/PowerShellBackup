@@ -1,26 +1,26 @@
 <!--
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
- 	Author: Victor Willingham (https://github.com/BigBobFro)
-  	Used in conjunction with Backup.ps1
+	Author: Victor Willingham (https://github.com/BigBobFro)
+	Used in conjunction with FAB Backup Script
 -->
 
 <Root>
 	<AppSettings>
 		<TempFolder>c:\temp</TempFolder>
-		<LogFolder>c:\Logs</LogFolder>
+		<LogFolder>C:\ProgramData\FAB\Logs</LogFolder>
 	</AppSettings>
 	<Retention>
 		<Number>1</Number>
 		<Unit>Month</Unit>
 	</Retention>
-	<Destination>e:\Backup</Destination>
+	<Destination>F:\Backups</Destination>
 	<Backup>
 		<name>Files</name>
 		<Location>d:\Files</Location>
 	</Backup>
 	<Backup>
 		<Name>OwnerData</Name>
-		<Location>f:\user\<REDACTED>\Documents</Location>
+		<Location>c:\users\user\Documents</Location>
 	</Backup>
 </Root>
